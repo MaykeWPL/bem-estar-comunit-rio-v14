@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receitas Saudáveis</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{
+  font-family:'Poppins',Arial,sans-serif;
+  margin:0;
+  background:linear-gradient(135deg,#fff6ed 0%,#ffe9d4 50%,#ffd9b0 100%);
+  background-attachment:fixed;
+  color:#3a2418;
+  min-height:100vh;
+}
+
+/* === HERO / ENTRADA === */
+header{
+  position:relative;
+  background:linear-gradient(120deg,#ff5e3a 0%,#ff7a18 45%,#ffb347 100%);
+  color:white;
+  text-align:center;
+  padding:80px 20px 90px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(255,122,24,.28);
+}
+header::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 15% 30%,rgba(255,255,255,.25),transparent 35%),
+    radial-gradient(circle at 85% 70%,rgba(255,255,255,.2),transparent 40%);
+  pointer-events:none;
+}
+.hero-emojis{
+  font-size:3rem;
+  display:flex;justify-content:center;gap:14px;
+  margin-bottom:10px;
+}
+.hero-emojis span{display:inline-block;animation:bounce 2.4s ease-in-out infinite}
+.hero-emojis span:nth-child(2){animation-delay:.2s}
+.hero-emojis span:nth-child(3){animation-delay:.4s}
+.hero-emojis span:nth-child(4){animation-delay:.6s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+header h1{
+  margin:6px 0 8px;
+  font-size:2.6rem;
+  font-weight:800;
+  letter-spacing:.5px;
+  text-shadow:0 3px 10px rgba(0,0,0,.18);
+}
+header p{margin:0;font-size:1.1rem;opacity:.97;font-weight:400}
+
+/* curva decorativa */
+header::after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:-1px;height:60px;
+  background:linear-gradient(135deg,#fff6ed 0%,#ffe9d4 50%,#ffd9b0 100%);
+  clip-path:ellipse(75% 100% at 50% 100%);
+}
+
+/* === NAV === */
+nav{
+  position:sticky;top:0;z-index:50;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(10px);
+  padding:12px;
+  box-shadow:0 4px 18px rgba(255,122,24,.12);
+}
+nav a{
+  color:#d65a00;
+  text-decoration:none;
+  font-weight:600;
+  padding:10px 20px;
+  border-radius:30px;
+  transition:.25s;
+  font-size:.95rem;
+  display:inline-flex;align-items:center;gap:6px;
+}
+nav a:hover{
+  background:linear-gradient(135deg,#ff7a18,#ffb347);
+  color:white;
+  transform:translateY(-2px);
+  box-shadow:0 6px 14px rgba(255,122,24,.3);
+}
+
+/* === SECTIONS === */
+section{
+  max-width:1100px;
+  margin:30px auto;
+  background:white;
+  padding:32px;
+  border-radius:24px;
+  box-shadow:0 10px 30px rgba(255,122,24,.10);
+}
+
+h2{
+  color:#ff7a18;
+  font-size:1.8rem;
+  margin:0 0 20px;
+  display:flex;align-items:center;gap:10px;
+  border-bottom:3px solid #ffe1c2;
+  padding-bottom:12px;
+}
+
+/* === GRID DE RECEITAS === */
+.receitas-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.receita{
+  margin:0;
+  padding:22px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(135deg,#fff8f1,#fff);
+  box-shadow:0 6px 18px rgba(255,122,24,.08);
+  border-left:5px solid #ff7a18;
+  transition:.3s;
+  display:flex;flex-direction:column;
+}
+.receita:hover{
+  transform:translateY(-5px);
+  box-shadow:0 14px 30px rgba(255,122,24,.18);
+}
+.receita h3{
+  margin:0 0 8px;
+  color:#d65a00;
+  font-size:1.15rem;
+  font-weight:700;
+}
+.receita p{margin:6px 0;line-height:1.55}
+.receita strong{
+  color:#ff7a18;
+  display:inline-block;
+  margin-top:10px;
+  font-size:.92rem;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+.receita ul{
+  padding-left:20px;
+  margin:6px 0 4px;
+}
+.receita ul li{margin:3px 0}
+
+/* cores por categoria */
+#massas .receita{border-left-color:#e84a3a}
+#massas h2{color:#e84a3a;border-bottom-color:#fcd6cf}
+#lanches .receita{border-left-color:#ff9a3c}
+#lanches h2{color:#ff9a3c;border-bottom-color:#ffe3c4}
+#doces .receita{border-left-color:#d35cab}
+#doces h2{color:#d35cab;border-bottom-color:#fad4ea}
+#sucos .receita{border-left-color:#3ab57f}
+#sucos h2{color:#3ab57f;border-bottom-color:#cdeede}
+#aproveitamento .receita{border-left-color:#7e57c2}
+#aproveitamento h2{color:#7e57c2;border-bottom-color:#e3d6f5}
+
+/* === BOTÃO VOLTAR AO TOPO === */
+.top-btn{
+  position:fixed;bottom:24px;right:24px;
+  background:linear-gradient(135deg,#ff5e3a,#ff7a18);
+  color:white;border:none;
+  width:52px;height:52px;border-radius:50%;
+  font-size:1.4rem;cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,94,58,.4);
+  transition:.25s;z-index:60;
+  display:flex;align-items:center;justify-content:center;
+}
+.top-btn:hover{transform:translateY(-3px) scale(1.05);filter:brightness(1.05)}
+
+/* === FOOTER === */
+footer{
+  background:linear-gradient(120deg,#ff5e3a,#ff7a18);
+  color:white;text-align:center;
+  padding:24px;margin-top:40px;
+  font-weight:500;
+}
+
+@media(max-width:600px){
+  header h1{font-size:1.9rem}
+  .hero-emojis{font-size:2.2rem}
+  section{padding:22px;margin:20px 12px}
+}
+</style>
+</head>
+
+<body>
+<a href="V14_Atividade_extencionista.html#conteudo" style="position:fixed;top:16px;left:16px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:linear-gradient(135deg,#2a7f62,#3ab58a);color:#fff;font-family:Poppins,Arial,sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 8px 20px rgba(42,127,98,.35);border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(6px);transition:.25s" onmouseover="this.style.transform='translateY(-2px)';this.style.filter='brightness(1.08)'" onmouseout="this.style.transform='';this.style.filter=''">&larr; &#128154; Bem-Estar Comunitário (Saúde)</a>
+
+<header>
+  <div class="hero-emojis"><span>🥗</span><span>🍅</span><span>🥑</span><span>🍓</span></div>
+  <h1>Receitas Saudáveis e Práticas</h1>
+  <p>Alimentação equilibrada para o seu dia a dia</p>
+</header>
+
+<nav>
+  <a href="#massas">🍝 Massas</a>
+  <a href="#lanches">🥪 Lanches</a>
+  <a href="#doces">🍰 Doces</a>
+  <a href="#sucos">🥤 Bebidas</a>
+  <a href="#aproveitamento">♻️ Aproveitamento</a>
+</nav>
+
+<section id="massas">
+  <h2>🍝 Massas e Pratos Principais</h2>
+  <div class="receitas-grid">
+
+    <div class="receita">
+      <h3>Macarrão com Abobrinha e Ovo</h3>
+      <p>Uma refeição leve e nutritiva com legumes frescos.</p>
+      <strong>Ingredientes</strong>
+      <ul><li>2 ovos</li><li>2 abobrinhas</li><li>1 tomate</li><li>Sal a gosto</li></ul>
+      <strong>Modo de preparo</strong>
+      <p>Prepare omeletes finas com os ovos e corte em tiras. Corte a abobrinha em fios finos e pique o tomate. Misture tudo e finalize com molho de preferência.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Nhoque de Moranga</h3>
+      <strong>Ingredientes</strong>
+      <ul><li>Purê de abóbora</li><li>1 ovo</li><li>Farinha</li><li>Noz moscada</li></ul>
+      <strong>Preparo</strong>
+      <p>Misture todos os ingredientes até formar uma massa. Modele, cozinhe em água quente até subir e sirva com molho.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Macarrão Cremoso de Forno</h3>
+      <p>Ideal para reaproveitar sobras de alimentos.</p>
+      <strong>Preparo</strong>
+      <p>Misture macarrão cozido com um creme feito de leite e creme de leite. Acrescente legumes e proteínas e leve ao forno para gratinar.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="lanches">
+  <h2>🥪 Lanches e Salgados</h2>
+  <div class="receitas-grid">
+
+    <div class="receita">
+      <h3>Bolinho de Feijão</h3>
+      <p>Opção rica em proteínas e fácil de preparar.</p>
+      <strong>Preparo</strong>
+      <p>Misture feijão amassado com cenoura ralada, temperos e farinha. Modele e asse ou grelhe.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Panqueca de Arroz</h3>
+      <p>Aproveite sobras de arroz.</p>
+      <p>Misture o arroz com ovos, temperos e legumes. Modele e prepare na frigideira.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Pão de Tapioca</h3>
+      <p>Hidrate a tapioca com leite, adicione ovos e queijo. Modele e asse até dourar.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Coxinha de Batata Doce com Frango</h3>
+      <p>Misture batata doce e frango, modele e asse.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="doces">
+  <h2>🍰 Doces Saudáveis</h2>
+  <div class="receitas-grid">
+
+    <div class="receita">
+      <h3>Bolo de Beterraba</h3>
+      <p>Bata os ingredientes líquidos com beterraba, misture com a farinha e leve ao forno. Finalize com cobertura de chocolate.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Bolo de Feijão</h3>
+      <p>Use feijão cozido batido para enriquecer a massa do bolo.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Trufa de Banana com Cacau</h3>
+      <p>Cozinhe banana amassada com cacau até engrossar. Modele em bolinhas e deixe esfriar.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Sorvete de Banana</h3>
+      <p>Bata banana com água e leve ao congelador.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="sucos">
+  <h2>🥤 Bebidas Naturais</h2>
+  <div class="receitas-grid">
+
+    <div class="receita">
+      <h3>Suco de Cascas de Frutas</h3>
+      <p>Bata cascas higienizadas com água, coe e adoce.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Suco de Laranja com Hortelã</h3>
+      <p>Bata laranja com ervas frescas e água.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="aproveitamento">
+  <h2>♻️ Aproveitamento de Alimentos</h2>
+  <div class="receitas-grid">
+
+    <div class="receita">
+      <h3>Biscoitos com Cascas e Talos</h3>
+      <p>Utilize partes normalmente descartadas dos vegetais para criar massas nutritivas.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Salada com Cascas</h3>
+      <p>Cozinhe e tempere cascas de legumes para uma salada rica em nutrientes.</p>
+    </div>
+
+    <div class="receita">
+      <h3>Antepasto de Casca de Banana</h3>
+      <p>Tempere e asse a casca para criar uma opção rica em fibras.</p>
+    </div>
+
+  </div>
+</section>
+
+<button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo">↑</button>
+
+<footer>
+  <p>Adaptado de materiais de nutrição · Projeto educacional 🌱</p>
+</footer>
+
+</body>
+</html>

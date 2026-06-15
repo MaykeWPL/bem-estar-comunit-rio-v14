@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Prático para Controlar a Ansiedade</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #00a7a7;
+    --primary-dark: #007f8f;
+    --secondary: #ff8a3d;
+    --accent: #6c63ff;
+    --mint: #7ee8c7;
+    --rose: #ff6b8a;
+    --yellow: #ffd166;
+    --bg: #eefcff;
+    --card: #ffffff;
+    --text: #20303c;
+    --muted: #60727f;
+    --shadow: 0 18px 45px rgba(0, 127, 143, .18);
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    background:
+        radial-gradient(circle at 12% 8%, rgba(126, 232, 199, .65), transparent 28%),
+        radial-gradient(circle at 88% 12%, rgba(255, 138, 61, .35), transparent 24%),
+        linear-gradient(180deg, #f1fffb 0%, #eef7ff 44%, #fff8ef 100%);
+    color: var(--text);
+}
+
+header {
+    position: relative;
+    min-height: 430px;
+    padding: 58px 22px 82px;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    background:
+        linear-gradient(135deg, rgba(0, 167, 167, .94), rgba(108, 99, 255, .88)),
+        linear-gradient(45deg, var(--primary), var(--accent));
+}
+
+header::before,
+header::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    opacity: .62;
+}
+
+header::before {
+    width: 260px;
+    height: 260px;
+    left: -70px;
+    top: -70px;
+    background: var(--yellow);
+}
+
+header::after {
+    width: 310px;
+    height: 310px;
+    right: -90px;
+    bottom: -130px;
+    background: var(--secondary);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: popIn .75s ease both;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255, 255, 255, .42);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .18);
+    backdrop-filter: blur(12px);
+    font-weight: 700;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2.35rem, 6vw, 4.7rem);
+    line-height: 1.03;
+    letter-spacing: 0;
+    text-shadow: 0 8px 26px rgba(0, 0, 0, .18);
+}
+
+.hero-content p {
+    max-width: 720px;
+    margin: 20px auto 0;
+    font-size: clamp(1rem, 2.3vw, 1.25rem);
+    color: rgba(255, 255, 255, .94);
+}
+
+.floating-icons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+.floating-icons span {
+    display: grid;
+    place-items: center;
+    width: 62px;
+    height: 62px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .2);
+    border: 1px solid rgba(255, 255, 255, .35);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, .15);
+    backdrop-filter: blur(10px);
+    font-size: 1.85rem;
+    animation: float 3.2s ease-in-out infinite;
+}
+
+.floating-icons span:nth-child(2) { animation-delay: .35s; }
+.floating-icons span:nth-child(3) { animation-delay: .7s; }
+.floating-icons span:nth-child(4) { animation-delay: 1.05s; }
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, .82);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 30px rgba(32, 48, 60, .08);
+}
+
+nav a,
+.top-button,
+.support-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 999px;
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    box-shadow: 0 10px 24px rgba(0, 127, 143, .24);
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+nav a:hover,
+.top-button:hover,
+.support-link:hover {
+    transform: translateY(-3px);
+    filter: saturate(1.18);
+    box-shadow: 0 16px 30px rgba(0, 127, 143, .34);
+}
+
+nav a:nth-child(2) { background: linear-gradient(135deg, #ff8a3d, #ff5f7e); }
+nav a:nth-child(3) { background: linear-gradient(135deg, #6c63ff, #00a7a7); }
+nav a:nth-child(4) { background: linear-gradient(135deg, #14b884, #ffd166); color: #17332e; }
+nav a:nth-child(5) { background: linear-gradient(135deg, #ff6b8a, #6c63ff); }
+nav a:nth-child(6) { background: linear-gradient(135deg, #20303c, #00a7a7); }
+
+main {
+    width: min(1120px, calc(100% - 32px));
+    margin: 34px auto 70px;
+}
+
+section {
+    position: relative;
+    margin: 26px 0;
+    padding: clamp(24px, 4vw, 38px);
+    background: rgba(255, 255, 255, .88);
+    border: 1px solid rgba(0, 167, 167, .12);
+    border-radius: 26px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    animation: fadeIn .7s ease both;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 8px;
+    background: linear-gradient(180deg, var(--primary), var(--secondary), var(--accent));
+}
+
+h2 {
+    margin-top: 0;
+    color: var(--primary-dark);
+    font-size: clamp(1.55rem, 3vw, 2.15rem);
+}
+
+h3 {
+    color: #315162;
+    margin-top: 24px;
+}
+
+p, li {
+    line-height: 1.75;
+    color: var(--muted);
+}
+
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+li {
+    position: relative;
+    margin: 9px 0;
+    padding-left: 30px;
+}
+
+li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    display: grid;
+    place-items: center;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    color: white;
+    font-size: .75rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.tip-grid,
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.mini-card,
+.tech-card {
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #ffffff, #f5fffb);
+    border: 1px solid rgba(0, 167, 167, .12);
+    box-shadow: 0 12px 26px rgba(0, 127, 143, .1);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.mini-card:hover,
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 34px rgba(0, 127, 143, .18);
+}
+
+.mini-card strong,
+.tech-card strong {
+    display: block;
+    color: var(--primary-dark);
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.support-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.support-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
+    padding: 22px;
+    border-radius: 24px;
+    color: white;
+    box-shadow: 0 18px 36px rgba(32, 48, 60, .18);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.support-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 44px rgba(32, 48, 60, .24);
+}
+
+.support-card h3,
+.support-card p {
+    color: inherit;
+}
+
+.support-card h3 {
+    margin: 12px 0 8px;
+    font-size: 1.3rem;
+}
+
+.support-card p {
+    margin: 0 0 16px;
+    opacity: .94;
+}
+
+.support-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .22);
+    font-size: 1.9rem;
+}
+
+.support-number {
+    margin-top: auto;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.support-card.cvv { background: linear-gradient(135deg, #ff5f7e, #e83f5b); }
+.support-card.samu { background: linear-gradient(135deg, #ff8a3d, #ffbf69); color: #3a2418; }
+.support-card.sus { background: linear-gradient(135deg, #00a7a7, #33d6a6); }
+.support-card.caps { background: linear-gradient(135deg, #6c63ff, #9b5de5); }
+
+.support-link {
+    margin-top: 16px;
+    align-self: flex-start;
+    background: rgba(255, 255, 255, .22);
+    border: 1px solid rgba(255, 255, 255, .35);
+    box-shadow: none;
+}
+
+.support-table-wrap {
+    margin-top: 26px;
+    overflow-x: auto;
+    border-radius: 22px;
+    box-shadow: 0 14px 30px rgba(0, 127, 143, .12);
+}
+
+table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    background: white;
+}
+
+th,
+td {
+    padding: 17px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e6f3f4;
+}
+
+th {
+    color: white;
+    background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+    font-size: .92rem;
+}
+
+td {
+    color: var(--muted);
+    font-weight: 500;
+}
+
+tr:nth-child(even) td {
+    background: #f5fffb;
+}
+
+.alert-box {
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 20px;
+    color: #3a2418;
+    background: linear-gradient(135deg, #fff3c4, #ffe0a3);
+    border-left: 7px solid var(--secondary);
+    font-weight: 700;
+}
+
+footer {
+    padding: 28px 18px;
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+}
+
+footer p {
+    margin: 0;
+    color: rgba(255, 255, 255, .92);
+}
+
+.top-button {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 20;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border-radius: 18px;
+    font-size: 1.35rem;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(18px) scale(.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(4deg); }
+}
+
+@media (max-width: 680px) {
+    header {
+        min-height: 390px;
+        padding-top: 42px;
+    }
+
+    nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    nav a {
+        flex: 0 0 auto;
+        padding: 11px 15px;
+        font-size: .9rem;
+    }
+
+    main {
+        width: min(100% - 22px, 1120px);
+        margin-top: 22px;
+    }
+
+    section {
+        border-radius: 20px;
+    }
+
+    .floating-icons span {
+        width: 52px;
+        height: 52px;
+        border-radius: 18px;
+        font-size: 1.55rem;
+    }
+}
+</style>
+</head>
+
+<body>
+<a href="V14_Atividade_extencionista.html#conteudo" style="position:fixed;top:16px;left:16px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:linear-gradient(135deg,#2a7f62,#3ab58a);color:#fff;font-family:Poppins,Arial,sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 8px 20px rgba(42,127,98,.35);border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(6px);transition:.25s" onmouseover="this.style.transform='translateY(-2px)';this.style.filter='brightness(1.08)'" onmouseout="this.style.transform='';this.style.filter=''">&larr; &#128154; Bem-Estar Comunitário (Saúde)</a>
+
+<header id="topo">
+    <div class="hero-content">
+        <div class="hero-badge">🌿 Saúde mental e autocuidado</div>
+        <h1>Guia Prático para Controlar a Ansiedade</h1>
+        <p>Aprenda formas simples, acolhedoras e seguras para lidar com a ansiedade no dia a dia.</p>
+        <div class="floating-icons" aria-hidden="true">
+            <span>🧘</span>
+            <span>💙</span>
+            <span>🌤️</span>
+            <span>✨</span>
+        </div>
+    </div>
+</header>
+
+<nav aria-label="Menu principal">
+    <a href="#intro">🌱 Introdução</a>
+    <a href="#ciclo">🔁 Ciclo</a>
+    <a href="#controle">🧭 Controle</a>
+    <a href="#rotina">📅 Rotina</a>
+    <a href="#tecnicas">🫁 Técnicas</a>
+    <a href="#apoio">🤝 Apoio</a>
+</nav>
+
+<main>
+    <section id="intro">
+        <h2>O que é a ansiedade?</h2>
+        <p>A ansiedade é uma reação natural do corpo diante de situações percebidas como importantes ou desafiadoras. Ela funciona como um alerta que ajuda na preparação para eventos futuros.</p>
+        <p>Em níveis equilibrados, a ansiedade pode ser positiva. Porém, quando se torna intensa ou constante, pode causar sofrimento, prejudicar a rotina e afetar a qualidade de vida.</p>
+
+        <div class="tip-grid">
+            <div class="mini-card"><strong>💓 Corpo em alerta</strong> Coração acelerado, respiração rápida e tensão muscular podem aparecer.</div>
+            <div class="mini-card"><strong>🧠 Pensamentos intensos</strong> Preocupação excessiva e dificuldade de concentração são comuns.</div>
+            <div class="mini-card"><strong>🌿 Atenção ao equilíbrio</strong> Observar os sinais ajuda a buscar cuidado no momento certo.</div>
+        </div>
+    </section>
+
+    <section id="ciclo">
+        <h2>O ciclo da ansiedade</h2>
+        <p>A ansiedade pode se intensificar quando evitamos situações que causam desconforto.</p>
+        <p>Ao evitar algo, sentimos alívio momentâneo. No entanto, essa fuga reforça o medo, tornando a situação ainda mais difícil no futuro.</p>
+
+        <ul>
+            <li>Você evita uma situação</li>
+            <li>Sente alívio imediato</li>
+            <li>O medo aumenta no longo prazo</li>
+            <li>A ansiedade cresce progressivamente</li>
+        </ul>
+    </section>
+
+    <section id="controle">
+        <h2>Como controlar a ansiedade</h2>
+        <div class="tip-grid">
+            <div class="mini-card"><strong>1. Aceite a ansiedade</strong> Reconhecer o que você sente é o primeiro passo para controlar melhor a situação.</div>
+            <div class="mini-card"><strong>2. Viva o presente</strong> Observe objetos, cores, sons e detalhes ao seu redor para voltar ao agora.</div>
+            <div class="mini-card"><strong>3. Avance aos poucos</strong> Enfrente situações gradualmente, respeitando seus limites.</div>
+        </div>
+    </section>
+
+    <section id="rotina">
+        <h2>Importância da rotina</h2>
+        <p>Manter uma rotina organizada reduz a incerteza e aumenta a sensação de controle.</p>
+        <ul>
+            <li>Planeje seu dia com horários realistas</li>
+            <li>Durma bem e respeite momentos de descanso</li>
+            <li>Reserve tempo para lazer e contato social</li>
+            <li>Evite excessos e comportamentos impulsivos</li>
+        </ul>
+    </section>
+
+    <section id="tecnicas">
+        <h2>Técnicas para reduzir a ansiedade</h2>
+        <div class="tech-grid">
+            <div class="tech-card"><strong>🫁 Respiração controlada</strong> Inspire pelo nariz por 4 segundos, segure por 2 e expire pela boca por 6 segundos.</div>
+            <div class="tech-card"><strong>👀 Foco no presente</strong> Use os sentidos para observar o ambiente: visão, audição, tato, cheiros e sensações.</div>
+            <div class="tech-card"><strong>🌄 Visualização</strong> Imagine situações de forma completa e pense em soluções possíveis para reduzir o medo.</div>
+            <div class="tech-card"><strong>💭 Reestruturação</strong> Pergunte-se: “e se isso acontecer?” e busque respostas práticas e realistas.</div>
+            <div class="tech-card"><strong>🎧 Atividades leves</strong> Ouça música, leia, cozinhe, pratique hobbies ou assista algo tranquilo.</div>
+            <div class="tech-card"><strong>📝 Gatilhos</strong> Anote situações que aumentam a ansiedade e como você reage a elas.</div>
+        </div>
+    </section>
+
+    <section id="apoio">
+        <h2>Planilha de apoio</h2>
+        <p>Use esta área para identificar onde buscar ajuda e qual atitude tomar em diferentes momentos.</p>
+
+        <div class="support-board">
+            <article class="support-card cvv">
+                <div class="support-icon">☎️</div>
+                <h3>CVV</h3>
+                <p>Apoio emocional gratuito e sigiloso, 24 horas por dia.</p>
+                <div class="support-number">188</div>
+                <a class="support-link" href="https://urldefense.com/v3/__https://www.cvv.org.br/__;!!Nyu6ZXf5!qCCRXmsY1wkp3OWtRZ28N6i9tpOBBvWAz4Iy7F9HoWABtTOtl3DWs_YcoRBa3S5MndSP5cFtNGe3XY-QY4U$" target="_blank" rel="noopener">Acessar CVV</a>
+            </article>
+
+            <article class="support-card samu">
+                <div class="support-icon">🚑</div>
+                <h3>SAMU</h3>
+                <p>Emergência médica quando houver risco imediato à vida.</p>
+                <div class="support-number">192</div>
+            </article>
+
+            <article class="support-card sus">
+                <div class="support-icon">🏥</div>
+                <h3>UBS / SUS</h3>
+                <p>Procure uma unidade de saúde para orientação e encaminhamento.</p>
+                <div class="support-number">Atendimento local</div>
+            </article>
+
+            <article class="support-card caps">
+                <div class="support-icon">🤝</div>
+                <h3>CAPS</h3>
+                <p>Apoio psicossocial para acompanhamento em saúde mental.</p>
+                <div class="support-number">Rede municipal</div>
+            </article>
+        </div>
+
+        <div class="support-table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de apoio</th>
+                        <th>Quando procurar</th>
+                        <th>Contato / local</th>
+                        <th>Primeiro passo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pessoa de confiança</td>
+                        <td>Quando precisar conversar e se sentir acolhido</td>
+                        <td>Família, amigos ou escola</td>
+                        <td>Envie uma mensagem ou peça alguns minutos de conversa</td>
+                    </tr>
+                    <tr>
+                        <td>Profissional de saúde</td>
+                        <td>Quando os sintomas atrapalham rotina, sono ou estudos</td>
+                        <td>Psicólogo, médico, UBS ou SUS</td>
+                        <td>Marque uma consulta ou peça encaminhamento</td>
+                    </tr>
+                    <tr>
+                        <td>CVV</td>
+                        <td>Quando precisar de apoio emocional imediato</td>
+                        <td>Telefone 188 ou site do CVV</td>
+                        <td>Ligue gratuitamente ou acesse o atendimento online</td>
+                    </tr>
+                    <tr>
+                        <td>Emergência</td>
+                        <td>Quando houver risco à vida ou crise intensa</td>
+                        <td>SAMU 192 ou pronto atendimento</td>
+                        <td>Procure ajuda imediatamente</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="alert-box">Se a ansiedade estiver muito intensa, constante ou acompanhada de pensamentos de autoagressão, procure ajuda profissional imediatamente.</div>
+    </section>
+
+    <section>
+        <h2>Conclusão</h2>
+        <p>Controlar a ansiedade é um processo individual e contínuo. Pratique as técnicas com frequência, observe os resultados e procure apoio sempre que necessário.</p>
+    </section>
+</main>
+
+<footer>
+    <p>Conteúdo adaptado para uso educacional em site • Saúde mental, equilíbrio e autocuidado</p>
+</footer>
+
+<button class="top-button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+
+</body>
+</html>
